@@ -1,4 +1,4 @@
-package org.example;
+package Sklep;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

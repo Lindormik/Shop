@@ -1,4 +1,4 @@
-package org.example;
+package Sklep;
 
 import java.util.HashMap;
 import java.util.Map;

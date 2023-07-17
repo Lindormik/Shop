@@ -1,4 +1,4 @@
-package org.example;
+package Sklep;
 
 public enum OrderStatus {
     PAID, CANCELLED, SENT, PENDING
