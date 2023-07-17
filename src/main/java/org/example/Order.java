@@ -3,19 +3,7 @@ package org.example;
 import java.util.Map;
 
 public class Order {
-    /*-orderId | int | autoinrementacja,
--orderNumber| String | losowo generowany ciąg 8
-  znaków
--orderSum | double | wartość większa od 0.
--clientName | String | walidacja != null, !isBlank,
-  name.size > 0 && name.size < 50, only chars.
--clientSurname | String | walidacja != null, !isBlank,
-  name.size > 0 && name.size < 50, only chars.
--clientAddress | String | walidacja != null, !isBlank,
-  name.size > 0 && name.size < 50
--orderStatus | Enum | oplacone, anulowane, wysłane,
-w przygotowaniu
--products | Map<Product, Integer> | wartość > 0*/
+
 
     private int orderId;
     private double orderSum;
@@ -33,5 +21,33 @@ w przygotowaniu
         this.clientAddress = clientAddress;
         this.orderStatus = orderStatus;
         this.orderId++;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public double getOrderSum() {
+        return orderSum;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public String getClientSurname() {
+        return clientSurname;
+    }
+
+    public String getClientAddress() {
+        return clientAddress;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public Map<Product, Integer> getProducts() {
+        return products;
     }
 }
