@@ -14,7 +14,7 @@ public class OrderService {
         loadOrdersFromFile(); // Wczytaj zamówienia z pliku przy tworzeniu instancji klasy.
     }
 
-    public void dodajZamowienie(Order order) {
+    public void addOrder(Order order) {
         int orderId = order.getOrderId();
         if (!orders.containsKey(orderId)) {
             orders.put(orderId, order);
@@ -25,7 +25,7 @@ public class OrderService {
         }
     }
 
-    public void usunZamowienie(int orderId) {
+    public void removeOrder(int orderId) {
         if (orders.containsKey(orderId)) {
             orders.remove(orderId);
             System.out.println("Usunięto zamówienie: #" + orderId);
@@ -35,11 +35,11 @@ public class OrderService {
         }
     }
 
-    public Order pokazWybraneZamowienie(int orderId) {
+    public Order showOneOrder(int orderId) {
         return orders.get(orderId);
     }
 
-    public void pokazZamowienia() {
+    public void showAllOrders() {
         if (!orders.isEmpty()) {
             System.out.println("Lista zamówień:");
             for (Order order : orders.values()) {
