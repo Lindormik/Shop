@@ -1,7 +1,5 @@
 package org.example;
 
-import static java.util.prefs.Preferences.MAX_NAME_LENGTH;
-
 public class Product {
 
     private int productID;
