@@ -51,6 +51,8 @@ public class ProductService {
     private Product parseProductFromLine(String line) {
         String[] parts = line.split(";");
 
+
+
         if (parts.length == 5) {
             try {
                 int productId = Integer.parseInt(parts[0]);
