@@ -10,7 +10,7 @@ public class CategoryService {
         categories = new HashMap<>();
     }
 
-    public void dodajKategorie(String name) {
+    public void addCategory(String name) {
         try {
             Category category = new Category(name);
             categories.put(category.getCategoryId(), category);
@@ -20,7 +20,7 @@ public class CategoryService {
         }
     }
 
-    public void usunKategorie(int categoryId) {
+    public void removeCategory(int categoryId) {
         if (categories.containsKey(categoryId)) {
             categories.remove(categoryId);
             System.out.println("Usunięto kategorię o numerze: " + categoryId);
@@ -29,7 +29,7 @@ public class CategoryService {
         }
     }
 
-    public void pokazWszystkieKategorie() {
+    public void showAllCategories() {
         if (!categories.isEmpty()) {
             System.out.println("Lista kategorii:");
             for (Category category : categories.values()) {
@@ -40,7 +40,7 @@ public class CategoryService {
         }
     }
 
-    public void pokazWybranaKategorie(int categoryId) {
+    public void showOneCategory(int categoryId) {
         Category category = categories.get(categoryId);
         if (category != null) {
             System.out.println("Kategoria #" + category.getCategoryId() + ": " + category.getName());
