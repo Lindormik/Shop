@@ -4,7 +4,9 @@ public class Product {
 
     private int productID;
     private double price;
-    private String name;
+    private String surname;
+
+
 
 
 
