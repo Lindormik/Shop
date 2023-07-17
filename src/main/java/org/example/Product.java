@@ -3,11 +3,12 @@ package org.example;
 public class Product {
 
     private int productID;
-    private double price;
     private String name;
-    private int quantity;
     private Category category;
-    public Product(int productID, double price, String name, Category category, int quantity) {
+    private double price;
+    private int quantity;
+
+    public Product(int productID, String name, Category category, double price, int quantity) {
         this.productID = productID;
         this.price = validatePrice(price);
         this.name = validateName(name);
