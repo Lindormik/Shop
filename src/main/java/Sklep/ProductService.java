@@ -1,4 +1,4 @@
-package org.example;
+package Sklep;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -50,6 +50,8 @@ public class ProductService {
 
     private Product parseProductFromLine(String line) {
         String[] parts = line.split(";");
+
+
 
         if (parts.length == 5) {
             try {

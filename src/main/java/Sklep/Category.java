@@ -1,4 +1,4 @@
-package org.example;
+package Sklep;
 
 public class Category {
     private int categoryId;
