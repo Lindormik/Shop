@@ -17,6 +17,30 @@ public class ProductService {
         products = new ArrayList<>();
     }
 
+    public void addProduct() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj ID produktu: ");
+        int productId = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Podaj nazwę produktu: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Podaj kategorię produktu: ");
+        String category = scanner.nextLine();
+
+        System.out.print("Podaj cenę produktu: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.print("Podaj ilość produktu: ");
+        int quantity = scanner.nextInt();
+        scanner.nextLine();
+
+        Product product = new Product(productId, name, category, price, quantity);
+        addProduct(product);
+        System.out.println("Produkt został dodany.");
+    }
     public void addProduct(String name, double price, int quantity) {
    /*  try {
      /*Product product = new Category(name,price,quantity);*//*
@@ -89,8 +113,5 @@ public class ProductService {
             }
         }
         return null;
-    }
-}
-*/
     }
 }

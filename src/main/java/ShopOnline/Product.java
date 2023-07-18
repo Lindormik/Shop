@@ -8,6 +8,8 @@ public class Product {
     private double price;
     private int quantity;
 
+    public Product(int productID, String name, Category category, double price, int quantity) {
+        this.productID = random.nextInt(0,100);
     public Product(String name, double price, int quantity) {
         this.productID = productID;
         this.price = validatePrice(price);

@@ -2,7 +2,7 @@ package ShopOnline;
 
 public class Category {
     private int categoryId;
-    private String name;
+    private final String name;
 
     public Category(String name) {
         if (name == null || name.trim().isEmpty() || name.length() >= 50) {
