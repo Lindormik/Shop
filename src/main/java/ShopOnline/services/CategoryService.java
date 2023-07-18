@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class CategoryService {
     private final List<Category> categories;
-
     Category category1 = new Category("Komputery stacjonarne");
     Category category2 = new Category("Drukarki i skanery");
     Category category3 = new Category("Klawiatury");

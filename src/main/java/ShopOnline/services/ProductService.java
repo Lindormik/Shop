@@ -17,8 +17,29 @@ public class ProductService {
         products = new ArrayList<>();
     }
 
-    public void addProduct(Product product) {
-        products.add(product);
+    public void addProduct() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj ID produktu: ");
+        int productId = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Podaj nazwę produktu: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Podaj kategorię produktu: ");
+        String category = scanner.nextLine();
+
+        System.out.print("Podaj cenę produktu: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.print("Podaj ilość produktu: ");
+        int quantity = scanner.nextInt();
+        scanner.nextLine();
+
+        Product product = new Product(productId, name, category, price, quantity);
+        addProduct(product);
+        System.out.println("Produkt został dodany.");
     }
 
     public void deleteProduct(Product product) {
@@ -76,7 +97,7 @@ public class ProductService {
                 double price = Double.parseDouble(parts[3]);
                 int quantity = Integer.parseInt(parts[4]);
 
-                return new Product(productId, name, price, quantity);
+                return new Product(productId, name, category, price, quantity);
             } catch (IllegalArgumentException e) {
                 System.err.println("Błąd podczas parsowania linii: " + line);
             }
