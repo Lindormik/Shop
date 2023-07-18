@@ -24,7 +24,7 @@ public class Menu extends ProductService {
                 case 1 -> showProductSubMenu();
                 case 2 -> showCategorySubMenu();
 //                case 2 -> showOrderSubMenu();
-                case 3 -> exit = true;
+                case 4 -> exit = true;
                 default -> System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
             }
 
@@ -59,7 +59,7 @@ public class Menu extends ProductService {
         boolean back = false;
         while (!back) {
             System.out.println("[1] Pokaż wszystkie kategorie.");
-            System.out.println("[2,IdKategorii] Pokaż wybrana kategorie.");
+            System.out.println("[2,IdKategorii] Pokaż wybraną kategorie.");
             System.out.println("[3,Nazwa kategorii] Dodaj kategorie.");
             System.out.println("[4] Cofnij");
             String choice = scanner.next();
@@ -75,5 +75,4 @@ public class Menu extends ProductService {
             System.out.println();
         }
     }
-}
 }

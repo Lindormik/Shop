@@ -42,12 +42,42 @@ public class ProductService {
 //        System.out.println("Produkt został dodany.");
 //    }
 
+    public void addProduct(String name, double price, int quantity) {
+        try {
+            Product product = new Product(name, price, quantity);
+            products.get(product.getProductID());
+            System.out.println("Dodano nowy produkt: " + product.getName());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Błąd dodawania produktu: " + e.getMessage());
+        }
+    }
 
     public void deleteProduct(Product product) {
         products.remove(product);
     }
 
     public List<Product> showAllProducts() {
+        List<Product> products = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("ListOfProducts.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                if (parts.length == 5) {
+                    int productId = Integer.parseInt(parts[0]);
+                    String name = parts[1];
+                    Category category = validateCategory(parts[2]);
+                    double price = Double.parseDouble(parts[3]);
+                    int quantity = Integer.parseInt(parts[4]);
+
+                    Product product = new Product(productId, name, category, price, quantity);
+                    products.add(product);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return products;
     }
 
@@ -65,44 +95,27 @@ public class ProductService {
         }
     }
     public Product findProductById(int productId) {
-        for (Product product : products) {
-            if (product.getProductId() == productId) {
-                return product;
-            }
-        }
-        return null;
-    }
-
-    public void loadProductsFromFile(String fileName) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("nazwa_pliku.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                Product product = parseProductFromLine(line);
-                if (product != null) {
-                    products.add(product);
+                // Przykład formatu danych w pliku: ID,Nazwa,Kategoria,Cena,Ilość
+                String[] parts = line.split(",");
+                if (parts.length == 5) {
+                    int id = Integer.parseInt(parts[0]);
+                    if (id == productId) {
+                        String name = parts[1];
+                        Category category = validateCategory(parts[2]);
+                        double price = Double.parseDouble(parts[3]);
+                        int quantity = Integer.parseInt(parts[4]);
+
+                        return new Product(productId, name, category, price, quantity);
+                    }
                 }
             }
         } catch (IOException e) {
-            System.err.println("Błąd podczas odczytu pliku: " + e.getMessage());
+            e.printStackTrace();
         }
-    }
 
-    private Product parseProductFromLine(String line) {
-        String[] parts = line.split(";");
-
-        if (parts.length == 5) {
-            try {
-                int productId = Integer.parseInt(parts[0]);
-                String name = parts[1];
-                Category category = Category.valueOf(parts[2]);
-                double price = Double.parseDouble(parts[3]);
-                int quantity = Integer.parseInt(parts[4]);
-
-                return new Product(productId, name, category, price, quantity);
-            } catch (IllegalArgumentException e) {
-                System.err.println("Błąd podczas parsowania linii: " + line);
-            }
-        }
         return null;
     }
 }

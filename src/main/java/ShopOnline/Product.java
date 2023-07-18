@@ -4,16 +4,16 @@ import java.util.Random;
 
 public class Product {
 
-    private Random random = new Random();
+    private static Random random = new Random();
 
-    private int productID;
-    private String name;
-    private Category category;
-    private double price;
-    private int quantity;
+    private static int productID;
+    private final String name;
+    private static Category category;
+    private final double price;
+    private static int quantity;
 
     public Product(int productID, String name, Category category, double price, int quantity) {
-        this.productID = random.nextInt(0,100);
+        this.productID = random.nextInt(0, 100);
         this.price = validatePrice(price);
         this.name = validateName(name);
         this.category = validateCategory(category);
@@ -68,17 +68,11 @@ public class Product {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = validatePrice(price);
-    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = validateName(name);
-    }
 
     public Category getCategory() {
         return category;
