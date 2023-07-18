@@ -17,40 +17,31 @@ public class ProductService {
         products = new ArrayList<>();
     }
 
-    public void addProduct() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Podaj ID produktu: ");
-        int productId = scanner.nextInt();
-        scanner.nextLine();
+//    public void addProduct() {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Podaj ID produktu: ");
+//        int productId = scanner.nextInt();
+//        scanner.nextLine();
+//
+//        System.out.print("Podaj nazwę produktu: ");
+//        String name = scanner.nextLine();
+//
+//        System.out.print("Podaj kategorię produktu: ");
+//        String category = scanner.nextLine();
+//
+//        System.out.print("Podaj cenę produktu: ");
+//        double price = scanner.nextDouble();
+//        scanner.nextLine();
+//
+//        System.out.print("Podaj ilość produktu: ");
+//        int quantity = scanner.nextInt();
+//        scanner.nextLine();
+//
+//        Product product = new Product(productId, name, category, price, quantity);
+//        addProduct(product);
+//        System.out.println("Produkt został dodany.");
+//    }
 
-        System.out.print("Podaj nazwę produktu: ");
-        String name = scanner.nextLine();
-
-        System.out.print("Podaj kategorię produktu: ");
-        String category = scanner.nextLine();
-
-        System.out.print("Podaj cenę produktu: ");
-        double price = scanner.nextDouble();
-        scanner.nextLine();
-
-        System.out.print("Podaj ilość produktu: ");
-        int quantity = scanner.nextInt();
-        scanner.nextLine();
-
-        Product product = new Product(productId, name, category, price, quantity);
-        addProduct(product);
-        System.out.println("Produkt został dodany.");
-    }
-    public void addProduct(String name, double price, int quantity) {
-   /*  try {
-     /*Product product = new Category(name,price,quantity);*//*
-        products.get(product.getProductID());
-        products.add(product);
-        System.out.println("Dodano nową kategorię: " + category.getName());
-    } catch (IllegalArgumentException e) {
-        System.out.println("Błąd dodawania kategorii: " + e.getMessage());
-    }}*/
-/*
 
     public void deleteProduct(Product product) {
         products.remove(product);
@@ -75,7 +66,7 @@ public class ProductService {
     }
     public Product findProductById(int productId) {
         for (Product product : products) {
-            if (product.getProductID() == productId) {
+            if (product.getProductId() == productId) {
                 return product;
             }
         }
@@ -107,7 +98,7 @@ public class ProductService {
                 double price = Double.parseDouble(parts[3]);
                 int quantity = Integer.parseInt(parts[4]);
 
-                return new Product(productId, name, price, quantity);
+                return new Product(productId, name, category, price, quantity);
             } catch (IllegalArgumentException e) {
                 System.err.println("Błąd podczas parsowania linii: " + line);
             }

@@ -1,6 +1,10 @@
 package ShopOnline;
 
+import java.util.Random;
+
 public class Product {
+
+    private Random random = new Random();
 
     private int productID;
     private String name;
@@ -10,11 +14,15 @@ public class Product {
 
     public Product(int productID, String name, Category category, double price, int quantity) {
         this.productID = random.nextInt(0,100);
-    public Product(String name, double price, int quantity) {
-        this.productID = productID;
         this.price = validatePrice(price);
         this.name = validateName(name);
         this.category = validateCategory(category);
+        this.quantity = validateQuantity(quantity);
+    }
+
+    public Product(String name, double price, int quantity) {
+        this.price = validatePrice(price);
+        this.name = validateName(name);
         this.quantity = validateQuantity(quantity);
     }
 
