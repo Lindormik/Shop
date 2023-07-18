@@ -18,15 +18,14 @@ public class ProductService {
     }
 
     public void addProduct(String name, double price, int quantity) {
-   /*  try {
-     /*Product product = new Category(name,price,quantity);*//*
-        products.get(product.getProductID());
-        products.add(product);
-        System.out.println("Dodano nową kategorię: " + category.getName());
+     try {
+     Product product = new Product(name,price,quantity);
+     products.add(product);
+        System.out.println("Dodano nową kategorię: " + product.getName());
     } catch (IllegalArgumentException e) {
         System.out.println("Błąd dodawania kategorii: " + e.getMessage());
-    }}*/
-/*
+    }}
+
 
     public void deleteProduct(Product product) {
         products.remove(product);
@@ -91,6 +90,4 @@ public class ProductService {
         return null;
     }
 }
-*/
-    }
-}
+
