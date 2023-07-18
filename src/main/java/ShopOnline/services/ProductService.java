@@ -1,13 +1,17 @@
-package Sklep;
+package ShopOnline.services;
+
+import ShopOnline.Category;
+import ShopOnline.Product;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ProductService {
-    private List<Product> products;
+    private final List<Product> products;
 
     public ProductService() {
         products = new ArrayList<>();
@@ -25,7 +29,20 @@ public class ProductService {
         return products;
     }
 
-    public Product showOneProduct(int productId) {
+    public void showOneProduct() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj ID produktu: ");
+        int productId = scanner.nextInt();
+        scanner.nextLine();
+
+        Product product = findProductById(productId);
+        if (product != null) {
+            System.out.println(product);
+        } else {
+            System.out.println("Produkt o podanym ID nie został znaleziony.");
+        }
+    }
+    public Product findProductById(int productId) {
         for (Product product : products) {
             if (product.getProductID() == productId) {
                 return product;
@@ -51,17 +68,15 @@ public class ProductService {
     private Product parseProductFromLine(String line) {
         String[] parts = line.split(";");
 
-
-
         if (parts.length == 5) {
             try {
                 int productId = Integer.parseInt(parts[0]);
                 String name = parts[1];
-                //Category category = Category.valueOf(parts[2]);
+                Category category = Category.valueOf(parts[2]);
                 double price = Double.parseDouble(parts[3]);
                 int quantity = Integer.parseInt(parts[4]);
 
-                //return new Product(productId, name, category, price, quantity);
+                return new Product(productId, name, price, quantity);
             } catch (IllegalArgumentException e) {
                 System.err.println("Błąd podczas parsowania linii: " + line);
             }

@@ -1,4 +1,6 @@
-package Sklep;
+package ShopOnline.services;
+
+import ShopOnline.Order;
 
 import java.io.*;
 import java.util.HashMap;
