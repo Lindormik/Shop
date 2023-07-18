@@ -8,7 +8,7 @@ public class Product {
     private double price;
     private int quantity;
 
-    public Product(int productID, String name, double price, int quantity) {
+    public Product(String name, double price, int quantity) {
         this.productID = productID;
         this.price = validatePrice(price);
         this.name = validateName(name);
