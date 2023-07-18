@@ -1,4 +1,4 @@
-package Sklep;
+package ShopOnline;
 
 public class Category {
     private int categoryId;

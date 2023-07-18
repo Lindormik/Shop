@@ -1,4 +1,4 @@
-package Sklep;
+package ShopOnline;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Sklep;
+package ShopOnline;
 
 import java.util.Map;
 
