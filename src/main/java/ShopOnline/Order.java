@@ -6,6 +6,7 @@ public class Order {
 
 
     private int orderId;
+    private int lastOrderId = 0;
     private double orderSum;
     private String clientName;
     private String clientSurname;
@@ -14,13 +15,14 @@ public class Order {
     private Map<Product, Integer> products;
 
     public Order(String clientName, String clientSurname, String clientAddress, Map<Product, Integer> products, double orderSum, OrderStatus orderStatus) {
+        lastOrderId++;
         this.orderSum = orderSum;
         this.clientName = clientName;
         this.clientSurname = clientSurname;
         this.products = products;
         this.clientAddress = clientAddress;
         this.orderStatus = orderStatus;
-        this.orderId++;
+        this.orderId = lastOrderId;
     }
 
     public int getOrderId() {

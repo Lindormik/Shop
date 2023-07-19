@@ -3,8 +3,6 @@ package ShopOnline;
 import java.util.Random;
 
 public class Product {
-
-    private static final Random random = new Random();
     private int productID;
     private static int lastProductId = 0;
     private final String productName;
@@ -62,10 +60,6 @@ public class Product {
             throw new IllegalArgumentException("Ilość musi być większa od 0");
         }
         return quantity;
-    }
-
-    public static Random getRandom() {
-        return random;
     }
 
     public int getProductID() {
