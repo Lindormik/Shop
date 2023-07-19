@@ -71,6 +71,15 @@ public class CategoryService {
         }
         System.out.println("Kategoria o podanym numerze nie istnieje.");
     }
-}
+
+
+    public Category findOrCreateCategory(String name) {
+        for (Category category : categories) {
+            if (category.getName().equalsIgnoreCase(name)) {
+                return category;
+            }
+        } Category newCategory = new Category(name);
+        categories.add(newCategory);
+        return newCategory;}}
 
 

@@ -8,10 +8,12 @@ public class Category {
     private final String name;
 
     public Category(String name) {
-        lastCategoryId++; // Increment the last assigned ID
+        lastCategoryId++;
         this.categoryId = lastCategoryId;
         this.name = name;
     }
+
+
 
     public int getCategoryId() {
         return categoryId;

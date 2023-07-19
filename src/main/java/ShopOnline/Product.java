@@ -2,7 +2,7 @@ package ShopOnline;
 
 import java.util.Random;
 
-public class Product extends Category {
+public class Product {
 
     private static final Random random = new Random();
     private int productID;
@@ -12,19 +12,19 @@ public class Product extends Category {
     private final double price;
     private final int quantity;
 
-    public Product(String productName, String name, double price, int quantity) {
-        super(name);
+    public Product(String productName, Category category, double price, int quantity) {
         lastProductId++;
         this.productID = lastProductId;
         this.productName = validateProductName(productName);
         this.price = validatePrice(price);
         this.quantity = validateQuantity(quantity);
+        this.category = category;
     }
 
     @Override
     public String toString() {
         return "Nazwa produktu: " + productName +
-                ", kategoria produktu: " + getName() +
+                ", kategoria produktu: " + category.getName() +
                 ", cena: " + price +
                 ", ilość: " + quantity +
                 ", ID produktu: " + productID;
