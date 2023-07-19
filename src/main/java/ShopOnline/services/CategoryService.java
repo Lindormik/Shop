@@ -1,7 +1,7 @@
 package ShopOnline.services;
 
 import ShopOnline.Category;
-import ShopOnline.Product;
+import ShopOnline.Order;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class CategoryService {
     public static List<Category> categories = generateCategories();
+
     public static List<Category> generateCategories() {
         List<Category> categoryList = new ArrayList<>();
 
@@ -36,12 +37,18 @@ public class CategoryService {
 
     }
 
+    public void showAllCategories() {
+        System.out.println("Lista produktów:");
+        for (Category category : categories) {
+            System.out.println(category);
+        }
+    }
+
+
     public void addCategory(String name) {
-
-            Category category = new Category(name);
-            categories.get(category.getCategoryId());
-            System.out.println("Dodano nową kategorię: " + category.getName());
-
+        Category category = new Category(name);
+        categories.add(category);
+        System.out.println("Dodano nową kategorię: " + category.getName());
     }
 
     public void removeCategory(int categoryId) {
@@ -53,30 +60,26 @@ public class CategoryService {
         }
     }
 
-    public List<Category> showAllCategories() {
-        return categories;
-    }
 
-    public void showOneCategory() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Podaj ID kategorii: ");
-        int categoryId = scanner.nextInt();
-        scanner.nextLine();
-
-        Category category = findCategoryById(categoryId);
-        if (category != null) {
-            System.out.println(category);
-        } else {
-            System.out.println("Kategoria o podanym ID nie została znaleziona.");
-        }
-    }
-    public Category findCategoryById(int categoryID) {
-        for (Category category: categories) {
-            if (category.getCategoryId() == categoryID) {
-                return category;
+    public void showOneCategory(int categoryId) {
+        for (Category category : categories) {
+            if (category.getCategoryId() == categoryId) {
+                System.out.println("Kategoria o numerze: " + category.getCategoryId());
+                System.out.println("Nazwa kategorii: " + category.getName());
+                return;
             }
         }
-        return null;
+        System.out.println("Kategoria o podanym numerze nie istnieje.");
     }
-}
+
+
+    public Category findOrCreateCategory(String name) {
+        for (Category category : categories) {
+            if (category.getName().equalsIgnoreCase(name)) {
+                return category;
+            }
+        } Category newCategory = new Category(name);
+        categories.add(newCategory);
+        return newCategory;}}
+
 

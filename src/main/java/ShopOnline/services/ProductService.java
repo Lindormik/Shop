@@ -1,10 +1,12 @@
 package ShopOnline.services;
 
+import ShopOnline.Category;
 import ShopOnline.Product;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+
 
 public class ProductService {
     public static List<Product> products = generateProducts();
@@ -12,19 +14,20 @@ public class ProductService {
     public static List<Product> generateProducts() {
         List<Product> productList = new ArrayList<>();
 
-        Product product1 = new Product("Produkt1", "Komputery stacjonarne", 874.32, 6);
-        Product product2 = new Product("Produkt2", "Drukarki i skanery", 1293.19, 9);
-        Product product3 = new Product("Produkt3", "Klawiatury", 672.44, 2);
-        Product product4 = new Product("Produkt4", "Monitory", 1068.53, 3);
-        Product product5 = new Product("Produkt5", "Mikrofony", 531.72, 7);
-        Product product6 = new Product("Produkt6", "Słuchawki", 1155.87, 111);
-        Product product7 = new Product("Produkt7", "Laptopy", 746.99, 5);
-        Product product8 = new Product("Produkt8", "Podzespoły komputerowe", 924.28, 4);
-        Product product9 = new Product("Produkt9", "Części do laptopów", 1254.11, 122);
-        Product product10 = new Product("Produkt10", "Słuchawki", 1036.6, 8);
-        Product product11 = new Product("Produkt11", "Komputery stacjonarne", 756.25, 6);
-        Product product12 = new Product("Produkt12", "Drukarki i skanery", 801.87, 9);
-        Product product13 = new Product("Produkt13", "Monitory", 679.52, 3);
+
+        Product product1 = new Product("Produkt1",CategoryService.categories.get(1) , 874.32, 6);
+        Product product2 = new Product("Produkt2", CategoryService.categories.get(2), 1293.19, 9);
+        Product product3 = new Product("Produkt3", CategoryService.categories.get(2), 672.44, 2);
+        Product product4 = new Product("Produkt4", CategoryService.categories.get(2), 1068.53, 3);
+        Product product5 = new Product("Produkt5", CategoryService.categories.get(3), 531.72, 7);
+        Product product6 = new Product("Produkt6", CategoryService.categories.get(4), 1155.87, 111);
+        Product product7 = new Product("Produkt7", CategoryService.categories.get(5), 746.99, 5);
+        Product product8 = new Product("Produkt8", CategoryService.categories.get(6), 924.28, 4);
+        Product product9 = new Product("Produkt9", CategoryService.categories.get(7), 1254.11, 122);
+        Product product10 = new Product("Produkt10", CategoryService.categories.get(8), 1036.6, 8);
+        Product product11 = new Product("Produkt11", CategoryService.categories.get(0), 756.25, 6);
+        Product product12 = new Product("Produkt12", CategoryService.categories.get(2), 801.87, 9);
+        Product product13 = new Product("Produkt13", CategoryService.categories.get(1), 679.52, 3);
 
         productList.add(product1);
         productList.add(product2);
@@ -43,41 +46,24 @@ public class ProductService {
         return productList;
     }
 
-
-    public void addProduct(String productName, String name, double price, int quantity) {
-        try {
-            Product product = new Product(productName, name, price, quantity);
-            products.get(product.getProductID());
-            System.out.println("Dodano nowy produkt: " + product.getName());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Błąd dodawania produktu: " + e.getMessage());
+    public void showAllProducts() {
+        System.out.println("Lista produktów:");
+        for (Product product : products) {
+            System.out.println(product.toString());
         }
     }
+
+    public void addProduct(String productName, Category category, double price, int quantity) {
+        Product product = new Product(productName, category, price, quantity);
+        products.add(product);
+        System.out.println("Dodano nowy produkt: " + product.getProductName());
+    }
+
 
     public void deleteProduct(Product product) {
         products.remove(product);
     }
-    public void showAllProducts() {
-        System.out.println("Lista produktów:");
-        for (Product product : products) {
-            System.out.println(product);
-        }
 
-
-
- /*   public void showOneProduct() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Podaj ID produktu: ");
-        int productID = scanner.nextInt();
-        scanner.nextLine();*/
-
-     /*   Product product = findProductById(productID);
-        if (product != null) {
-            System.out.println(product);
-        } else {
-            System.out.println("Produkt o podanym ID nie został znaleziony.");
-        }*/
-    }
 
     public void
     findProductById(int productID) {
@@ -86,6 +72,16 @@ public class ProductService {
                 System.out.println(product);
             }
         }
+    }
+    public void showOneProduct(int productId) {
+        for (Product product : products) {
+            if (product.getProductID() == productId) {
+                System.out.println("Produkt o numerze: " + product.getProductID());
+                System.out.println("Nazwa produktu: " + product.getProductName());
+                return;
+            }
         }
+        System.out.println("Produkt o podanym numerze nie istnieje.");
+    }
 
 }
