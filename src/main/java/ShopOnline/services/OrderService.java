@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class OrderService {
 
     private static List<Order> orders = generateOrders();
@@ -54,6 +55,17 @@ public class OrderService {
         for (Order order : orders) {
             if (order.getOrderId() == orderId) {
                 displayOrderDetails(order);
+                return;
+            }
+        }
+        System.out.println("Zamówienie o podanym numerze nie istnieje.");
+    }
+
+    public void changeOrderStatus(int orderId, OrderStatus newStatus) {
+        for (Order order : orders) {
+            if (order.getOrderId() == orderId) {
+                order.changeOrderStatus(newStatus);
+                System.out.println("Zmieniono status zamówienia o numerze: " + order.getOrderId());
                 return;
             }
         }

@@ -22,6 +22,9 @@ public class Order {
         this.clientAddress = clientAddress;
         this.orderStatus = orderStatus;
     }
+    public void changeOrderStatus(OrderStatus newStatus) {
+        this.orderStatus = newStatus;
+    }
 
     public int getOrderId() {
         return orderId;
