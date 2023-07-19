@@ -19,7 +19,6 @@ public class Category {
         this.name = name;
         this.categoryId++;
     }
-
     public int getCategoryId() {
         return categoryId;
     }
