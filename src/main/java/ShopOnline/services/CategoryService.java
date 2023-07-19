@@ -35,9 +35,6 @@ public class CategoryService {
         return categoryList;
 
     }
-    public CategoryService() {
-        categories = new ArrayList<>();
-    }
 
     public void addCategory(String name) {
 

@@ -42,9 +42,7 @@ public class ProductService {
 
         return productList;
     }
-   /* public ProductService() {
-        products = new ArrayList<>();
-    }*/
+
 
     public void addProduct(String productName, String name, double price, int quantity) {
         try {
