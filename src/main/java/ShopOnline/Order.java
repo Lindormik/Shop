@@ -3,8 +3,6 @@ package ShopOnline;
 import java.util.Map;
 
 public class Order {
-
-
     private int orderId;
     private double orderSum;
     private String clientName;

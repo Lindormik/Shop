@@ -24,7 +24,7 @@ public class Menu extends ProductService {
             switch (choice) {
                 case 1 -> showProductSubMenu();
                 case 2 -> showCategorySubMenu();
-//                case 2 -> showOrderSubMenu();
+//                case 3 -> showOrderSubMenu();
                 case 4 -> exit = true;
                 default -> System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
             }

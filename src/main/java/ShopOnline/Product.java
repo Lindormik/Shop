@@ -22,7 +22,7 @@ public class Product extends Category {
     @Override
     public String toString() {
         return "Nazwa produktu: " + productName +
-                "kategoria produktu: " + getName() +
+                ", kategoria produktu: " + category.getName() +
                 ", cena: " + price +
                 ", ilość: " + quantity;
     }
