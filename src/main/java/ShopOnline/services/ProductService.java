@@ -1,5 +1,6 @@
 package ShopOnline.services;
 
+import ShopOnline.Category;
 import ShopOnline.Product;
 
 import java.util.ArrayList;
@@ -42,44 +43,25 @@ public class ProductService {
 
         return productList;
     }
-   /* public ProductService() {
-        products = new ArrayList<>();
-    }*/
 
-    public void addProduct(String productName, String name, double price, int quantity) {
-        try {
-            Product product = new Product(productName, name, price, quantity);
-            products.get(product.getProductID());
-            System.out.println("Dodano nowy produkt: " + product.getName());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Błąd dodawania produktu: " + e.getMessage());
+    public void showAllProducts() {
+        System.out.println("Lista produktów:");
+        for (Product product : products) {
+            System.out.println(product.toString());
         }
     }
+
+    public void addProduct(String productName, String name, double price, int quantity) {
+        Product product = new Product(productName, name, price, quantity);
+        products.add(product);
+        System.out.println("Dodano nowy produkt: " + product.getProductName());
+    }
+
 
     public void deleteProduct(Product product) {
         products.remove(product);
     }
-    public void showAllProducts() {
-        System.out.println("Lista produktów:");
-        for (Product product : products) {
-            System.out.println(product);
-        }
 
-
-
- /*   public void showOneProduct() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Podaj ID produktu: ");
-        int productID = scanner.nextInt();
-        scanner.nextLine();*/
-
-     /*   Product product = findProductById(productID);
-        if (product != null) {
-            System.out.println(product);
-        } else {
-            System.out.println("Produkt o podanym ID nie został znaleziony.");
-        }*/
-    }
 
     public void
     findProductById(int productID) {
@@ -88,6 +70,6 @@ public class ProductService {
                 System.out.println(product);
             }
         }
-        }
+    }
 
 }

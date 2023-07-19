@@ -5,7 +5,8 @@ import java.util.Random;
 public class Product extends Category {
 
     private static final Random random = new Random();
-    private static int productID;
+    private int productID;
+    private static int lastProductId = 0;
     private final String productName;
     private static Category category;
     private final double price;
@@ -13,7 +14,8 @@ public class Product extends Category {
 
     public Product(String productName, String name, double price, int quantity) {
         super(name);
-        this.productID = random.nextInt(0, 100);
+        lastProductId++;
+        this.productID = lastProductId;
         this.productName = validateProductName(productName);
         this.price = validatePrice(price);
         this.quantity = validateQuantity(quantity);
@@ -22,9 +24,10 @@ public class Product extends Category {
     @Override
     public String toString() {
         return "Nazwa produktu: " + productName +
-                "kategoria produktu: " + getName() +
+                ", kategoria produktu: " + getName() +
                 ", cena: " + price +
-                ", ilość: " + quantity;
+                ", ilość: " + quantity +
+                ", ID produktu: " + productID;
     }
 
     private double validatePrice(double price) {
@@ -65,12 +68,8 @@ public class Product extends Category {
         return random;
     }
 
-    public static int getProductID() {
+    public int getProductID() {
         return productID;
-    }
-
-    public static void setProductID(int productID) {
-        Product.productID = productID;
     }
 
     public String getProductName() {
