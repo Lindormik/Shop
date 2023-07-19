@@ -28,7 +28,7 @@ public class Menu {
             System.out.println("1. Produkt");
             System.out.println("2. Kategoria");
             System.out.println("3. Zamówienia");
-            System.out.println("3. Wyjdź");
+            System.out.println("4. Wyjdź");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -130,10 +130,7 @@ public class Menu {
                 default:
                     System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
             }
-
             System.out.println();
-
         }
-
     }
 }

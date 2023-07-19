@@ -34,17 +34,13 @@ public class CategoryService {
         categoryList.add(category9);
 
         return categoryList;
-
     }
-
     public void showAllCategories() {
         System.out.println("Lista produktów:");
         for (Category category : categories) {
             System.out.println(category);
         }
     }
-
-
     public void addCategory(String name) {
         Category category = new Category(name);
         categories.add(category);
@@ -59,8 +55,6 @@ public class CategoryService {
             System.out.println("Kategoria o podanym numerze nie istnieje.");
         }
     }
-
-
     public void showOneCategory(int categoryId) {
         for (Category category : categories) {
             if (category.getCategoryId() == categoryId) {
@@ -72,14 +66,16 @@ public class CategoryService {
         System.out.println("Kategoria o podanym numerze nie istnieje.");
     }
 
-
     public Category findOrCreateCategory(String name) {
         for (Category category : categories) {
             if (category.getName().equalsIgnoreCase(name)) {
                 return category;
             }
-        } Category newCategory = new Category(name);
+        }
+        Category newCategory = new Category(name);
         categories.add(newCategory);
-        return newCategory;}}
+        return newCategory;
+    }
+}
 
 

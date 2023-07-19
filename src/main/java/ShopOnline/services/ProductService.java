@@ -57,13 +57,9 @@ public class ProductService {
         System.out.println("Dodano nowy produkt: " + product.getProductName());
 
     }
-
-
     public void deleteProduct(Product product) {
         products.remove(product);
     }
-
-
 
     public void showOneProduct(int productId) {
         for (Product product : products) {
@@ -79,10 +75,10 @@ public class ProductService {
     public Product findProductByNameAndCategory(String productName) {
         for (Product product : products) {
             if (product.getProductName().equals(productName)) {
-                return product; // Zwraca produkt, jeśli znaleziono pasujący
+                return product;
             }
         }
-        return null; // Zwraca null, jeśli produkt nie został znaleziony
+        return null;
     }
 
 }

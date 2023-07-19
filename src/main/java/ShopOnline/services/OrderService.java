@@ -17,13 +17,20 @@ public class OrderService {
 
     public static List<Order> generateOrders() {
         List<Order> ordersList = new ArrayList<>();
-        Map<Product, Integer> productMap = new HashMap<>();
-        productMap.put(ProductService.products.get(1), 4);
-        Order order1 = new Order("Client1", "Surname1", "Address1", productMap, 200.54, OrderStatus.PENDING);
+        Map<Product, Integer> productMap1 = new HashMap<>();
+        productMap1.put(ProductService.products.get(1), 4);
+        Map<Product, Integer> productMap2 = new HashMap<>();
+        productMap2.put(ProductService.products.get(3), 20);
+        Map<Product, Integer> productMap3 = new HashMap<>();
+        productMap3.put(ProductService.products.get(5), 23);
 
+        Order order1 = new Order("Client1", "Surname1", "Address1", productMap1, 200.54, OrderStatus.PENDING);
+        Order order2 = new Order("Client2", "Surname2", "Address2", productMap2, 100.99, OrderStatus.PAID);
+        Order order3 = new Order("Client3", "Surname3", "Address3", productMap3, 300.09, OrderStatus.SENT);
 
         ordersList.add(order1);
-
+        ordersList.add(order2);
+        ordersList.add(order3);
 
         return ordersList;
 
@@ -37,6 +44,7 @@ public class OrderService {
 
     public void showAllOrders() {
         System.out.println("Lista wszystkich zamówień:");
+        System.out.println();
         for (Order order : orders) {
             displayOrderDetails(order);
         }
