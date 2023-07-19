@@ -55,6 +55,7 @@ public class ProductService {
         Product product = new Product(productName, category, price, quantity);
         products.add(product);
         System.out.println("Dodano nowy produkt: " + product.getProductName());
+
     }
 
 
@@ -63,14 +64,7 @@ public class ProductService {
     }
 
 
-    public void
-    findProductById(int productID) {
-        for (Product product : products) {
-            if (product.getProductID() == productID) {
-                System.out.println(product);
-            }
-        }
-    }
+
     public void showOneProduct(int productId) {
         for (Product product : products) {
             if (product.getProductID() == productId) {
@@ -80,6 +74,15 @@ public class ProductService {
             }
         }
         System.out.println("Produkt o podanym numerze nie istnieje.");
+    }
+
+    public Product findProductByNameAndCategory(String productName) {
+        for (Product product : products) {
+            if (product.getProductName().equals(productName)) {
+                return product; // Zwraca produkt, jeśli znaleziono pasujący
+            }
+        }
+        return null; // Zwraca null, jeśli produkt nie został znaleziony
     }
 
 }

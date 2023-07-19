@@ -3,15 +3,21 @@ package ShopOnline;
 
 import ShopOnline.services.CategoryService;
 import ShopOnline.services.ProductService;
+import ShopOnline.services.OrderService;
 
+
+import java.util.Map;
 import java.util.Scanner;
+
 import static ShopOnline.services.CategoryService.generateCategories;
 import static ShopOnline.services.ProductService.generateProducts;
+import static ShopOnline.services.ProductService.products;
 
 public class Menu {
     private final Scanner scanner = new Scanner(System.in);
     private final ProductService productService = new ProductService();
     private final CategoryService categoryServiceService = new CategoryService();
+    private final OrderService orderService = new OrderService();
 
     public void showMainMenu() {
         generateProducts();
@@ -30,7 +36,7 @@ public class Menu {
             switch (choice) {
                 case 1 -> showProductSubMenu();
                 case 2 -> showCategorySubMenu();
-//                case 3 -> showOrderSubMenu();
+                case 3 -> showOrderSubMenu();
                 case 4 -> exit = true;
                 default -> System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
             }
@@ -43,7 +49,7 @@ public class Menu {
         boolean back = false;
         while (!back) {
             System.out.println("[1] Pokaż wszystkie produkty.");
-            System.out.println("[2, ID Produktu] Pokaż jeden produkt.");
+            System.out.println("[2, ID Produktu] Pokaż wybrany produkt.");
             System.out.println("[3,Nazwa produktu, Kategoria produktu, Cena produktu, Ilosc produktu] Dodaj produkt.");
             System.out.println("[4] Cofnij");
 
@@ -54,7 +60,7 @@ public class Menu {
             switch (Integer.parseInt(words[0])) {
                 case 1 -> productService.showAllProducts();
                 case 2 -> productService.showOneProduct(Integer.parseInt(words[1]));
-                case 3 ->  {
+                case 3 -> {
                     String productName = words[1];
                     Category category = categoryServiceService.findOrCreateCategory(words[2]);
                     double price = Double.parseDouble(words[3]);
@@ -89,4 +95,45 @@ public class Menu {
         }
     }
 
+    public void showOrderSubMenu() {
+        boolean back = false;
+        while (!back) {
+            System.out.println("[1] Pokaż wszystkie zamówienia.");
+            System.out.println("[2, ID Zamówienia] Pokaż wybrane zamówienie.");
+            System.out.println("[3,Nazwa produktu, Kategoria produktu, Cena produktu, Ilosc produktu] Dodaj zamówienie.");
+            System.out.println("[4] Cofnij");
+
+            String choice = scanner.next();
+            String[] words = choice.split(",");
+            scanner.nextLine();
+
+            switch (Integer.parseInt(words[0])) {
+                case 1:
+                    orderService.showAllOrders();
+                    break;
+                case 2:
+                    orderService.showSelectedOrder(Integer.parseInt(words[1]));
+                    break;
+                case 3:
+                    String clientName = words[1];
+                    String clientSurname = words[2];
+                    String clientAddress = words[3];
+                   /* Map<Product, Integer> products = words[3];*/
+                    double orderSum = Double.parseDouble(words[3]);
+
+                    // Call the addOrder method
+                   /* orderService.addOrder("ClientName", "ClientSurname", "ClientAddress", , orderSum, OrderStatus.PENDING);
+                    break;*/
+                case 4:
+                    back = true;
+                    break;
+                default:
+                    System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
+            }
+
+            System.out.println();
+
+        }
+
+    }
 }

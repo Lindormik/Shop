@@ -1,5 +1,6 @@
 package ShopOnline.services;
 
+import ShopOnline.Category;
 import ShopOnline.Order;
 import ShopOnline.OrderStatus;
 import ShopOnline.Product;
@@ -11,51 +12,59 @@ import java.util.List;
 import java.util.Map;
 
 public class OrderService {
-    private List<Order> orders;
 
-    public OrderService() {
-        orders = new ArrayList<>();
+    private static List<Order> orders = generateOrders();
+
+    public static List<Order> generateOrders() {
+        List<Order> ordersList = new ArrayList<>();
+        Map<Product, Integer> productMap = new HashMap<>();
+        productMap.put(ProductService.products.get(1), 4);
+        Order order1 = new Order("Client1", "Surname1", "Address1", productMap, 200.54, OrderStatus.PENDING);
+
+
+        ordersList.add(order1);
+
+
+        return ordersList;
+
     }
 
     public void addOrder(String clientName, String clientSurname, String clientAddress, Map<Product, Integer> products, double orderSum, OrderStatus orderStatus) {
-        Order order = new Order(clientName, clientSurname, clientAddress, products, orderSum, orderStatus);
-        orders.add(order);
-        System.out.println("Dodano nowe zamówienie. ID zamówienia: " + order.getOrderId());
-    }
-
-    public void deleteOrder(int orderId) {
-        Order order = findOrderById(orderId);
-        if (order != null) {
-            orders.remove(order);
-            System.out.println("Usunięto zamówienie o ID: " + orderId);
-        } else {
-            System.out.println("Zamówienie o podanym ID nie zostało znalezione.");
-        }
+        Order newOrder = new Order(clientName, clientSurname, clientAddress, products, orderSum, OrderStatus.PENDING);
+        orders.add(newOrder);
+        System.out.println("Dodano nowe zamówienie o numerze: " + newOrder.getOrderId());
     }
 
     public void showAllOrders() {
         System.out.println("Lista wszystkich zamówień:");
         for (Order order : orders) {
-            System.out.println(order.toString());
+            displayOrderDetails(order);
         }
     }
 
-    public void showOneOrder(int orderId) {
-        Order order = findOrderById(orderId);
-        if (order != null) {
-            System.out.println("Szczegóły zamówienia o ID: " + orderId);
-            System.out.println(order.toString());
-        } else {
-            System.out.println("Zamówienie o podanym ID nie zostało znalezione.");
-        }
-    }
-
-    private Order findOrderById(int orderId) {
+    public void showSelectedOrder(int orderId) {
         for (Order order : orders) {
             if (order.getOrderId() == orderId) {
-                return order;
+                displayOrderDetails(order);
+                return;
             }
         }
-        return null;
+        System.out.println("Zamówienie o podanym numerze nie istnieje.");
+    }
+
+    private void displayOrderDetails(Order order) {
+        System.out.println("Numer zamówienia: " + order.getOrderId());
+        System.out.println("Suma zamówienia: " + order.getOrderSum());
+        System.out.println("Imię klienta: " + order.getClientName());
+        System.out.println("Nazwisko klienta: " + order.getClientSurname());
+        System.out.println("Adres klienta: " + order.getClientAddress());
+        System.out.println("Status zamówienia: " + order.getOrderStatus());
+        System.out.println("Produkty w zamówieniu:");
+        for (Map.Entry<Product, Integer> entry : order.getProducts().entrySet()) {
+            Product product = entry.getKey();
+            int quantity = entry.getValue();
+            System.out.println(" - Nazwa produktu: " + product.getProductName() + ", Ilość: " + quantity);
+        }
+        System.out.println();
     }
 }
