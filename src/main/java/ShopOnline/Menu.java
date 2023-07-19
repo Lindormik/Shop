@@ -1,17 +1,22 @@
 package ShopOnline;
 
+
 import ShopOnline.services.CategoryService;
 import ShopOnline.services.ProductService;
 
 import java.util.Scanner;
 
-public class Menu extends ProductService {
+import static ShopOnline.services.CategoryService.generateCategories;
+import static ShopOnline.services.ProductService.generateProducts;
+
+public class Menu {
     private final Scanner scanner = new Scanner(System.in);
     private final ProductService productService = new ProductService();
     private final CategoryService categoryServiceService = new CategoryService();
 
     public void showMainMenu() {
         generateProducts();
+        generateCategories();
 
         boolean exit = false;
         while (!exit) {
@@ -40,7 +45,7 @@ public class Menu extends ProductService {
         while (!back) {
             System.out.println("[1] Pokaż wszystkie produkty.");
             System.out.println("[2] Pokaż jeden produkt.");
-            System.out.println("[3,Nazwa produktu, Cena produktu, Ilosc produktu] Dodaj produkt.");
+            System.out.println("[3,Nazwa produktu, Kategoria produktu, Cena produktu, Ilosc produktu] Dodaj produkt.");
             System.out.println("[4] Cofnij");
 
             String choice = scanner.next();
@@ -70,7 +75,7 @@ public class Menu extends ProductService {
             scanner.nextLine();
             switch (Integer.parseInt(words[0])) {
                 case 1 -> categoryServiceService.showAllCategories();
-                case 2 -> categoryServiceService.findCategoryById(Integer.parseInt(words[1]));
+                case 2 -> categoryServiceService.showOneCategory(Integer.parseInt(words[1]));
                 case 3 -> categoryServiceService.addCategory(words[1]);
                 case 4 -> back = true;
                 default -> System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
