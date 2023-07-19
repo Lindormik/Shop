@@ -40,13 +40,11 @@ public class CategoryService {
     }
 
     public void addCategory(String name) {
-        try {
+
             Category category = new Category(name);
             categories.get(category.getCategoryId());
             System.out.println("Dodano nową kategorię: " + category.getName());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Błąd dodawania kategorii: " + e.getMessage());
-        }
+
     }
 
     public void removeCategory(int categoryId) {
