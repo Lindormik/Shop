@@ -6,8 +6,6 @@ import ShopOnline.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class ProductService {
     public static List<Product> products = generateProducts();
 
