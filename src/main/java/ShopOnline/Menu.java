@@ -11,6 +11,8 @@ public class Menu extends ProductService {
     private final CategoryService categoryServiceService = new CategoryService();
 
     public void showMainMenu() {
+        generateProducts();
+
         boolean exit = false;
         while (!exit) {
             System.out.println("1. Produkt");
@@ -47,7 +49,7 @@ public class Menu extends ProductService {
 
             switch (Integer.parseInt(words[0])) {
                 case 1 -> productService.showAllProducts();
-                case 2 -> productService.showOneProduct();
+              /*  case 2 -> productService.showOneProduct();*/
                 case 3 -> productService.addProduct(words[1], words[2], Double.parseDouble(words[3]), Integer.parseInt(words[4]));
                 case 4 -> back = true;
                 default -> System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
@@ -76,4 +78,5 @@ public class Menu extends ProductService {
             System.out.println();
         }
     }
+
 }

@@ -1,11 +1,7 @@
 package ShopOnline.services;
 
-import ShopOnline.Category;
 import ShopOnline.Product;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -46,9 +42,9 @@ public class ProductService {
 
         return productList;
     }
-    public ProductService() {
+   /* public ProductService() {
         products = new ArrayList<>();
-    }
+    }*/
 
     public void addProduct(String productName, String name, double price, int quantity) {
         try {
@@ -66,31 +62,32 @@ public class ProductService {
     public void showAllProducts() {
         System.out.println("Lista produktów:");
         for (Product product : products) {
-            System.out.println(product.toString());
+            System.out.println(product);
         }
 
-    }
 
-    public void showOneProduct() {
+
+ /*   public void showOneProduct() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Podaj ID produktu: ");
         int productID = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine();*/
 
-        Product product = findProductById(productID);
+     /*   Product product = findProductById(productID);
         if (product != null) {
             System.out.println(product);
         } else {
             System.out.println("Produkt o podanym ID nie został znaleziony.");
-        }
+        }*/
     }
 
-    public Product findProductById(int productID) {
+    public void
+    findProductById(int productID) {
         for (Product product : products) {
             if (product.getProductID() == productID) {
-                return product;
+                System.out.println(product);
             }
         }
-        return null;
-    }
+        }
+
 }
