@@ -2,28 +2,29 @@ package ShopOnline;
 
 import java.util.Random;
 
-public class Product {
+public class Product extends Category {
 
-    private static Random random = new Random();
-
+    private static final Random random = new Random();
     private static int productID;
-    private final String name;
+    private final String productName;
     private static Category category;
     private final double price;
-    private static int quantity;
+    private final int quantity;
 
-    public Product(int productID, String name, Category category, double price, int quantity) {
+    public Product(String productName, String name, double price, int quantity) {
+        super(name);
         this.productID = random.nextInt(0, 100);
+        this.productName = validateProductName(productName);
         this.price = validatePrice(price);
-        this.name = validateName(name);
-        this.category = validateCategory(category);
         this.quantity = validateQuantity(quantity);
     }
 
-    public Product(String name, double price, int quantity) {
-        this.price = validatePrice(price);
-        this.name = validateName(name);
-        this.quantity = validateQuantity(quantity);
+    @Override
+    public String toString() {
+        return "Nazwa produktu: " + productName +
+                "kategoria produktu: " + getName() +
+                ", cena: " + price +
+                ", ilość: " + quantity;
     }
 
     private double validatePrice(double price) {
@@ -33,17 +34,17 @@ public class Product {
         return price;
     }
 
-    private String validateName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Pole Imię nie może być puste");
+    private String validateProductName(String productName) {
+        if (productName == null || productName.isBlank()) {
+            throw new IllegalArgumentException("Pole Nazwa nie może być puste");
         }
-        if (name.length() <= 0 || name.length() >= 50) {
-            throw new IllegalArgumentException("Pole Imię musi zawierać od 1 do 50 znaków");
+        if (productName.length() <= 0 || productName.length() >= 50) {
+            throw new IllegalArgumentException("Pole Nazwa musi zawierać od 1 do 50 znaków");
         }
-        if (!name.matches("[a-zA-Z]+")) {
-            throw new IllegalArgumentException("Pole Imię musi zawierać znaki z alfabetu");
-        }
-        return name;
+//        if (!productName.matches("[a-zA-Z1-9]")) {
+//            throw new IllegalArgumentException("Pole Nazwa musi zawierać znaki z alfabetu");
+//        }
+        return productName;
     }
 
     private Category validateCategory(Category category) {
@@ -60,33 +61,35 @@ public class Product {
         return quantity;
     }
 
-    public int getProductID() {
+    public static Random getRandom() {
+        return random;
+    }
+
+    public static int getProductID() {
         return productID;
+    }
+
+    public static void setProductID(int productID) {
+        Product.productID = productID;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public static Category getCategory() {
+        return category;
+    }
+
+    public static void setCategory(Category category) {
+        Product.category = category;
     }
 
     public double getPrice() {
         return price;
     }
 
-
-    public String getName() {
-        return name;
-    }
-
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = validateCategory(category);
-    }
-
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = validateQuantity(quantity);
     }
 }
