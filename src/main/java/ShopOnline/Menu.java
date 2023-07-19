@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 import static ShopOnline.services.CategoryService.generateCategories;
 import static ShopOnline.services.ProductService.generateProducts;
-import static ShopOnline.services.ProductService.products;
 
 public class Menu {
     private final Scanner scanner = new Scanner(System.in);
@@ -28,7 +27,7 @@ public class Menu {
             System.out.println("1. Produkt");
             System.out.println("2. Kategoria");
             System.out.println("3. Zamówienia");
-            System.out.println("3. Wyjdź");
+            System.out.println("4. Wyjdź");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -101,7 +100,8 @@ public class Menu {
             System.out.println("[1] Pokaż wszystkie zamówienia.");
             System.out.println("[2, ID Zamówienia] Pokaż wybrane zamówienie.");
             System.out.println("[3,Nazwa produktu, Kategoria produktu, Cena produktu, Ilosc produktu] Dodaj zamówienie.");
-            System.out.println("[4] Cofnij");
+            System.out.println("[4, ID Zamówienia, Nowy status] Zmień status zamówienia");
+            System.out.println("[5] Cofnij");
 
             String choice = scanner.next();
             String[] words = choice.split(",");
@@ -114,26 +114,33 @@ public class Menu {
                 case 2:
                     orderService.showSelectedOrder(Integer.parseInt(words[1]));
                     break;
-                case 3:
-                    String clientName = words[1];
-                    String clientSurname = words[2];
-                    String clientAddress = words[3];
-                   /* Map<Product, Integer> products = words[3];*/
-                    double orderSum = Double.parseDouble(words[3]);
+//                case 3:
+//                    String clientName = words[1];
+//                    String clientSurname = words[2];
+//                    String clientAddress = words[3];
+//                    /* Map<Product, Integer> products = words[3];*/
+//                    double orderSum = Double.parseDouble(words[3]);
+//                    orderService.addOrder("ClientName", "ClientSurname", "ClientAddress", , orderSum, OrderStatus.PENDING);*/
+//                    break;
 
-                    // Call the addOrder method
-                   /* orderService.addOrder("ClientName", "ClientSurname", "ClientAddress", , orderSum, OrderStatus.PENDING);
-                    break;*/
                 case 4:
+                    int orderId = Integer.parseInt(words[1]);
+                    String newStatusString = words[2];
+                    OrderStatus newStatus;
+                    try {
+                        newStatus = OrderStatus.valueOf(newStatusString.toUpperCase());
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Nieprawidłowy status zamówienia.");
+                        return;
+                    }
+                    orderService.changeOrderStatus(orderId, newStatus);
+                case 5:
                     back = true;
                     break;
                 default:
                     System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
             }
-
             System.out.println();
-
         }
-
     }
 }
