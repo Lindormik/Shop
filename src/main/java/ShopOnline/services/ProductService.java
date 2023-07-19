@@ -69,7 +69,6 @@ public class ProductService {
             System.out.println(product.toString());
         }
 
-        return products;
     }
 
     public void showOneProduct() {
