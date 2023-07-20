@@ -4,6 +4,7 @@ import ShopOnline.Category;
 import ShopOnline.Product;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ProductService {
@@ -13,7 +14,7 @@ public class ProductService {
         List<Product> productList = new ArrayList<>();
 
 
-        Product product1 = new Product("Produkt1",CategoryService.categories.get(1) , 874.32, 6);
+        Product product1 = new Product("Produkt1", CategoryService.categories.get(1), 874.32, 6);
         Product product2 = new Product("Produkt2", CategoryService.categories.get(2), 1293.19, 9);
         Product product3 = new Product("Produkt3", CategoryService.categories.get(2), 672.44, 2);
         Product product4 = new Product("Produkt4", CategoryService.categories.get(2), 1068.53, 3);
@@ -57,8 +58,17 @@ public class ProductService {
         System.out.println("Dodano nowy produkt: " + product.getProductName());
 
     }
-    public void deleteProduct(Product product) {
-        products.remove(product);
+    public void removeProductByID(int productID) {
+        Iterator<Product> iterator = products.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getProductID() == productID) {
+                iterator.remove();
+                System.out.println("Produkt o identyfikatorze " + productID + " został usunięty.");
+                return;
+            }
+        }
+        System.out.println("Nie znaleziono produktu o identyfikatorze " + productID + ".");
     }
 
     public void showOneProduct(int productId) {

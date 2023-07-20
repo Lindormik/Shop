@@ -50,7 +50,8 @@ public class Menu {
             System.out.println("[1] Pokaż wszystkie produkty.");
             System.out.println("[2, ID Produktu] Pokaż wybrany produkt.");
             System.out.println("[3,Nazwa produktu, Kategoria produktu, Cena produktu, Ilosc produktu] Dodaj produkt.");
-            System.out.println("[4] Cofnij");
+            System.out.println("[4, ID Produktu] Usuń wybrany produkt.");
+            System.out.println("[5] Cofnij");
 
             String choice = scanner.next();
             String[] words = choice.split(",");
@@ -66,7 +67,8 @@ public class Menu {
                     int quantity = Integer.parseInt(words[4]);
                     productService.addProduct(productName, category, price, quantity);
                 }
-                case 4 -> back = true;
+                case 4 -> productService.removeProductByID(Integer.parseInt(words[1]));
+                case 5 -> back = true;
                 default -> System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
             }
             System.out.println();
