@@ -103,7 +103,7 @@ public class Menu {
         while (!back) {
             System.out.println("[1] Pokaż wszystkie zamówienia.");
             System.out.println("[2, ID Zamówienia] Pokaż wybrane zamówienie.");
-            System.out.println("[3,Nazwa produktu, Kategoria produktu, Cena produktu, Ilosc produktu] Dodaj zamówienie.");
+            System.out.println("[3,Imie klienta, Nazwisko klienta,Adres klienta, Wartosc zamowienia,Id produktu, Ilosc produktu] Dodaj zamówienie.");
             System.out.println("[4, ID Zamówienia, Nowy status] Zmień status zamówienia");
             System.out.println("[5] Cofnij");
 
@@ -122,9 +122,9 @@ public class Menu {
                     String clientName = words[1];
                     String clientSurname = words[2];
                     String clientAddress = words[3];
-                    int productId = Integer.parseInt(words[4]);
-                    int quantity = Integer.parseInt(words[5]);
-                    double orderSum = Double.parseDouble(words[6]);
+                    double orderSum = Double.parseDouble(words[4]);
+                    int productId = Integer.parseInt(words[5]);
+                    int quantity = Integer.parseInt(words[6]);
                     orderService.addOrder(clientName,clientSurname,clientAddress,orderSum,productId,quantity);
                     break;
 
