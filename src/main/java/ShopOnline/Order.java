@@ -3,12 +3,12 @@ package ShopOnline;
 import java.util.Map;
 
 public class Order {
-    private int orderId;
+    private final int orderId;
     private static int lastOrderId = 0;
-    private double orderSum;
-    private String clientName;
-    private String clientSurname;
-    private String clientAddress;
+    private final double orderSum;
+    private final String clientName;
+    private final String clientSurname;
+    private final String clientAddress;
     private OrderStatus orderStatus;
     private Map<Product, Integer> products;
 
