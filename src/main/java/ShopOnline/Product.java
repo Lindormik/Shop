@@ -3,7 +3,7 @@ package ShopOnline;
 import java.util.Random;
 
 public class Product {
-    private int productID;
+    private final int productID;
     private static int lastProductId = 0;
     private final String productName;
     private static Category category;

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Category {
     private static int lastCategoryId = 0;
-    private int categoryId;
+    private final int categoryId;
     private final String name;
 
     public Category(String name) {
