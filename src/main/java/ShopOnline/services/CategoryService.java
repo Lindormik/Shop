@@ -1,13 +1,10 @@
 package ShopOnline.services;
 
 import ShopOnline.Category;
-import ShopOnline.Order;
-import ShopOnline.Product;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 public class CategoryService {
     public static List<Category> categories = generateCategories();
@@ -37,12 +34,14 @@ public class CategoryService {
 
         return categoryList;
     }
+
     public void showAllCategories() {
         System.out.println("Lista produktów:");
         for (Category category : categories) {
             System.out.println(category);
         }
     }
+
     public void addCategory(String name) {
         Category category = new Category(name);
         categories.add(category);
@@ -61,15 +60,17 @@ public class CategoryService {
         }
         System.out.println("Nie znaleziono kategorii o identyfikatorze " + categoryId + ".");
     }
-    public void showOneCategory(int categoryId) {
+
+    public String showOneCategory(int categoryId) {
         for (Category category : categories) {
             if (category.getCategoryId() == categoryId) {
-                System.out.println("Kategoria o numerze: " + category.getCategoryId());
-                System.out.println("Nazwa kategorii: " + category.getName());
-                return;
+                return "Kategoria o numerze: " + category.getCategoryId() + "\n" +
+                        "Nazwa kategorii: " + category.getName();
+
             }
         }
-        System.out.println("Kategoria o podanym numerze nie istnieje.");
+        return "Kategoria o podanym numerze nie istnieje.";
+
     }
 
     public Category findOrCreateCategory(String name) {
