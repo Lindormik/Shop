@@ -2,8 +2,10 @@ package ShopOnline.services;
 
 import ShopOnline.Category;
 import ShopOnline.Order;
+import ShopOnline.Product;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -48,12 +50,16 @@ public class CategoryService {
     }
 
     public void removeCategory(int categoryId) {
-        if (categories.contains(categoryId)) {
-            categories.remove(categoryId);
-            System.out.println("Usunięto kategorię o numerze: " + categoryId);
-        } else {
-            System.out.println("Kategoria o podanym numerze nie istnieje.");
+        Iterator<Category> iterator = categories.iterator();
+        while (iterator.hasNext()) {
+            Category category = iterator.next();
+            if (category.getCategoryId() == categoryId) {
+                iterator.remove();
+                System.out.println("Kategoria o identyfikatorze " + categoryId + " została usunięta.");
+                return;
+            }
         }
+        System.out.println("Nie znaleziono kategorii o identyfikatorze " + categoryId + ".");
     }
     public void showOneCategory(int categoryId) {
         for (Category category : categories) {
