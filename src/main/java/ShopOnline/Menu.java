@@ -81,7 +81,8 @@ public class Menu {
             System.out.println("[1] Pokaż wszystkie kategorie.");
             System.out.println("[2,IdKategorii] Pokaż wybraną kategorie.");
             System.out.println("[3,Nazwa kategorii] Dodaj kategorie.");
-            System.out.println("[4] Cofnij");
+            System.out.println("[4, ID Kategorii] Usuń wybraną kategorię.");
+            System.out.println("[5] Cofnij");
             String choice = scanner.next();
             String[] words = choice.split(",");
             scanner.nextLine();
@@ -89,7 +90,8 @@ public class Menu {
                 case 1 -> categoryServiceService.showAllCategories();
                 case 2 -> categoryServiceService.showOneCategory(Integer.parseInt(words[1]));
                 case 3 -> categoryServiceService.addCategory(words[1]);
-                case 4 -> back = true;
+                case 4 -> categoryServiceService.removeCategory(Integer.parseInt(words[1]));
+                case 5 -> back = true;
                 default -> System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
             }
             System.out.println();
