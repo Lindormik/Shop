@@ -58,6 +58,7 @@ public class ProductService {
         System.out.println("Dodano nowy produkt: " + product.getProductName());
 
     }
+
     public void removeProductByID(int productID) {
         Iterator<Product> iterator = products.iterator();
         while (iterator.hasNext()) {
@@ -91,4 +92,12 @@ public class ProductService {
         return null;
     }
 
+    public static Product findProductById(int productId) {
+        for (Product product : products) {
+            if (product.getProductID() == productId) {
+                return product;
+            }
+        }
+        return null;
+    }
 }

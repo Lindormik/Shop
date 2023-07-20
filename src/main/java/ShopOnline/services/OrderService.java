@@ -37,11 +37,19 @@ public class OrderService {
 
     }
 
-    public void addOrder(String clientName, String clientSurname, String clientAddress, Map<Product, Integer> products, double orderSum, OrderStatus orderStatus) {
+
+
+    public void addOrder(String clientName, String clientSurname, String clientAddress, double orderSum, int productId, int quantity ) {
+        Map<Product, Integer> products = new HashMap<>();
+        Product productById = ProductService.findProductById(productId);
+        products.put(productById, quantity);
         Order newOrder = new Order(clientName, clientSurname, clientAddress, products, orderSum, OrderStatus.PENDING);
         orders.add(newOrder);
         System.out.println("Dodano nowe zamówienie o numerze: " + newOrder.getOrderId());
     }
+
+
+
 
     public void showAllOrders() {
         System.out.println("Lista wszystkich zamówień:");

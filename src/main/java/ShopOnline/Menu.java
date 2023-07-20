@@ -118,14 +118,15 @@ public class Menu {
                 case 2:
                     orderService.showSelectedOrder(Integer.parseInt(words[1]));
                     break;
-//                case 3:
-//                    String clientName = words[1];
-//                    String clientSurname = words[2];
-//                    String clientAddress = words[3];
-//                    /* Map<Product, Integer> products = words[3];*/
-//                    double orderSum = Double.parseDouble(words[3]);
-//                    orderService.addOrder("ClientName", "ClientSurname", "ClientAddress", , orderSum, OrderStatus.PENDING);*/
-//                    break;
+                case 3:
+                    String clientName = words[1];
+                    String clientSurname = words[2];
+                    String clientAddress = words[3];
+                    int productId = Integer.parseInt(words[4]);
+                    int quantity = Integer.parseInt(words[5]);
+                    double orderSum = Double.parseDouble(words[6]);
+                    orderService.addOrder(clientName,clientSurname,clientAddress,orderSum,productId,quantity);
+                    break;
 
                 case 4:
                     int orderId = Integer.parseInt(words[1]);

@@ -61,15 +61,15 @@ public class CategoryService {
         System.out.println("Nie znaleziono kategorii o identyfikatorze " + categoryId + ".");
     }
 
-    public String showOneCategory(int categoryId) {
+    public void showOneCategory(int categoryId) {
         for (Category category : categories) {
             if (category.getCategoryId() == categoryId) {
-                return "Kategoria o numerze: " + category.getCategoryId() + "\n" +
-                        "Nazwa kategorii: " + category.getName();
+                System.out.println("Kategoria o numerze: " + category.getCategoryId() + "\n" +
+                        "Nazwa kategorii: " + category.getName());
 
             }
         }
-        return "Kategoria o podanym numerze nie istnieje.";
+        System.out.println("Kategoria o podanym numerze nie istnieje.");
 
     }
 
