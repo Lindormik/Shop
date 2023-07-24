@@ -15,8 +15,8 @@ public class Menu {
     private final OrderService orderService = new OrderService();
 
     public void showMainMenu() {
-        generateProducts();
         generateCategories();
+        generateProducts();
 
         boolean exit = false;
         while (!exit) {
