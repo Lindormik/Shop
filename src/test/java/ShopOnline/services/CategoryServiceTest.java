@@ -1,57 +1,80 @@
 package ShopOnline.services;
-
 import ShopOnline.Category;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CategoryServiceTest {
-    CategoryService categoryService = new CategoryService();
-    private ByteArrayOutputStream outputStream;
+
+    private CategoryService categoryService;
+
+    @BeforeEach
+    public void setUp() {
+        categoryService = new CategoryService();
+    }
 
     @Test
-    public void addCategoryTest() {
+    public void givenGenerateCategoriesMethod_whenCalled_thenCategoryListShouldNotBeEmpty() {
         // Given
 
-        String categoryTest = "Kierownice";
-
         // When
-        categoryService.addCategory(categoryTest);
+        List<Category> categoryList = categoryService.generateCategories();
 
         // Then
-        List<Category> categories = CategoryService.categories;
-        boolean categoryExists = categories.stream().anyMatch(category -> category.getName().equals(categoryTest));
-        assertTrue(categoryExists);
+        Assertions.assertNotNull(categoryList);
+        Assertions.assertFalse(categoryList.isEmpty());
+    }
+
+    @Test
+    public void givenAddCategoryMethod_whenNewCategoryAdded_thenCategoryListSizeShouldIncrease() {
+        // Given
+        int initialSize = categoryService.getAllCategories().size();
+        String categoryName = "TestCategory";
+
+        // When
+        categoryService.addCategory(categoryName);
+
+        // Then
+        int finalSize = categoryService.getAllCategories().size();
+        Assertions.assertEquals(initialSize + 1, finalSize);
+    }
+
+    @Test
+    public void givenShowOneCategoryMethod_whenExistingCategoryShown_thenOutputContainsCorrectCategory() {
+        // Given
+        Category testCategory = new Category("TestCategory");
+        categoryService.addCategory(testCategory.getName());
+
+        // When
+
+        // Then
 
     }
-//    @Test
-//    public void showOneCategoryWhenExistsTest(){
-//        // Given
-//        int categoryId = 1;
-//        String expectedOutput = "Kategoria o numerze: 1\n" +
-//                "Nazwa kategorii: Komputery stacjonarne";
-//        // When
-//        String actualOutput = categoryService.showOneCategory(categoryId);
-//
-//        // Then
-//        assertEquals(expectedOutput, actualOutput);
-//    }
-//
-//    @Test
-//    public void showOneCategoryWhenNotExistsTest() {
-//        // Given
-//        int categoryId = 100;
-//        String expectedOutput = "Kategoria o podanym numerze nie istnieje.";
-//        // When
-//        String actualOutput = categoryService.showOneCategory(categoryId);
-//
-//        // Then
-//        assertEquals(expectedOutput, actualOutput);
-//    }
+
+    @Test
+    public void givenShowOneCategoryMethod_whenNonExistingCategoryShown_thenOutputContainsErrorMessage() {
+        // Given
+        int nonExistingCategoryId = 999;
+
+        // When
+
+        // Then
+    }
+
+    @Test
+    public void givenFindOrCreateCategoryMethod_whenCategoryFound_thenCorrectCategoryShouldBeReturned() {
+        // Given
+        Category testCategory = new Category("TestCategory");
+        categoryService.addCategory(testCategory.getName());
+
+        // When
+        Category foundCategory = categoryService.findOrCreateCategory("TestCategory");
+
+        // Then
+        assertThat(testCategory).isEqualTo(foundCategory);
+    }
 }

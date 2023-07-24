@@ -3,6 +3,7 @@ package ShopOnline.services;
 import ShopOnline.Category;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -82,6 +83,11 @@ public class CategoryService {
         Category newCategory = new Category(name);
         categories.add(newCategory);
         return newCategory;
+    }
+
+    public List<Category> getAllCategories() {
+        return categories;
+
     }
 }
 
