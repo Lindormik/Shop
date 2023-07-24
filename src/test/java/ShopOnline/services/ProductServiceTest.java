@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static ShopOnline.services.ProductService.products;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ProductServiceTest {
@@ -32,7 +33,7 @@ public class ProductServiceTest {
     @Test
     public void givenAddProductMethod_whenNewProductAdded_thenProductListSizeShouldIncrease() {
         // Given
-        int initialSize = ProductService.products.size();
+        int initialSize = products.size();
         Category category = new Category("TestCategory");
         String productName = "TestProduct";
         double price = 99.99;
@@ -42,7 +43,7 @@ public class ProductServiceTest {
         productService.addProduct(productName, category, price, quantity);
 
         // Then
-        Assertions.assertEquals(initialSize + 1, ProductService.products.size());
+        Assertions.assertEquals(initialSize + 1, products.size());
     }
 
     @Test
@@ -50,7 +51,7 @@ public class ProductServiceTest {
         // Given
         Category category = new Category("TestCategory");
         Product testProduct = new Product("TestProduct", category, 99.99, 10);
-        productService.addProduct(testProduct.getProductName(), products.getCategory(), testProduct.getPrice(), testProduct.getQuantity());
+        productService.addProduct(testProduct.getProductName(), testProduct.getCategory(), testProduct.getPrice(), testProduct.getQuantity());
 
         // Whenn
 
@@ -75,7 +76,7 @@ public class ProductServiceTest {
         // Given
         Category category = new Category("TestCategory");
         Product testProduct = new Product("TestProduct1", category, 99.99, 10);
-        productService.addProduct(testProduct.getProductName(), Product.getCategory(), testProduct.getPrice(), testProduct.getQuantity());
+        productService.addProduct(testProduct.getProductName(), testProduct.getCategory(), testProduct.getPrice(), testProduct.getQuantity());
 
         // Whenn
         Product foundProduct = productService.findProductByNameAndCategory("TestProduct1");
