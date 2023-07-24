@@ -68,7 +68,7 @@ public class Product {
         return productName;
     }
 
-    public Category getCategory() {
+    public static Category getCategory() {
         return category;
     }
 

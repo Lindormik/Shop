@@ -50,7 +50,7 @@ public class ProductServiceTest {
         // Given
         Category category = new Category("TestCategory");
         Product testProduct = new Product("TestProduct", category, 99.99, 10);
-        productService.addProduct(testProduct.getProductName(), Product.getCategory(), testProduct.getPrice(), testProduct.getQuantity());
+        productService.addProduct(testProduct.getProductName(), products.getCategory(), testProduct.getPrice(), testProduct.getQuantity());
 
         // Whenn
 
