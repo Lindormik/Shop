@@ -77,7 +77,7 @@ public class ProductServiceTest {
         Product testProduct = new Product("TestProduct1", category, 99.99, 10);
         productService.addProduct(testProduct.getProductName(), Product.getCategory(), testProduct.getPrice(), testProduct.getQuantity());
 
-        // When
+        // Whenn
         Product foundProduct = productService.findProductByNameAndCategory("TestProduct1");
 
         // Then
