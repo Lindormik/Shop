@@ -1,11 +1,10 @@
 package ShopOnline.services;
 
-import ShopOnline.Category;
+
 import ShopOnline.Order;
 import ShopOnline.OrderStatus;
 import ShopOnline.Product;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.Map;
 
 public class OrderService {
 
-    private static List<Order> orders = generateOrders();
+    private static final List<Order> orders = generateOrders();
 
     public static List<Order> generateOrders() {
         List<Order> ordersList = new ArrayList<>();
@@ -36,8 +35,6 @@ public class OrderService {
         return ordersList;
 
     }
-
-
 
     public void addOrder(String clientName, String clientSurname, String clientAddress, double orderSum, int productId, int quantity ) {
         Map<Product, Integer> products = new HashMap<>();

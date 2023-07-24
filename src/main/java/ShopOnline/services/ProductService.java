@@ -16,7 +16,7 @@ public class ProductService {
 
         Product product1 = new Product("Produkt1", CategoryService.categories.get(1), 874.32, 6);
         Product product2 = new Product("Produkt2", CategoryService.categories.get(2), 1293.19, 9);
-        Product product3 = new Product("Produkt3", CategoryService.categories.get(2), 672.44, 2);
+        Product product3 = new Product("Produkt3", CategoryService.categories.get(5), 672.44, 2);
         Product product4 = new Product("Produkt4", CategoryService.categories.get(2), 1068.53, 3);
         Product product5 = new Product("Produkt5", CategoryService.categories.get(3), 531.72, 7);
         Product product6 = new Product("Produkt6", CategoryService.categories.get(4), 1155.87, 111);

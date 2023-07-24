@@ -1,7 +1,5 @@
 package ShopOnline;
 
-import java.util.Random;
-
 public class Category {
     private static int lastCategoryId = 0;
     private final int categoryId;

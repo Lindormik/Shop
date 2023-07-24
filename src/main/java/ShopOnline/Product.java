@@ -1,7 +1,5 @@
 package ShopOnline;
 
-import java.util.Random;
-
 public class Product {
     private final int productID;
     private static int lastProductId = 0;
@@ -16,7 +14,7 @@ public class Product {
         this.productName = validateProductName(productName);
         this.price = validatePrice(price);
         this.quantity = validateQuantity(quantity);
-        this.category = category;
+        Product.category = category;
     }
 
     @Override
@@ -39,12 +37,12 @@ public class Product {
         if (productName == null || productName.isBlank()) {
             throw new IllegalArgumentException("Pole Nazwa nie może być puste");
         }
-        if (productName.length() <= 0 || productName.length() >= 50) {
+        if (productName.length() == 0 || productName.length() >= 50) {
             throw new IllegalArgumentException("Pole Nazwa musi zawierać od 1 do 50 znaków");
         }
-//        if (!productName.matches("[a-zA-Z1-9]")) {
-//            throw new IllegalArgumentException("Pole Nazwa musi zawierać znaki z alfabetu");
-//        }
+        if (!productName.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$")) {
+            throw new IllegalArgumentException("Pole Nazwa musi zawierać znaki z alfabetu i cyfry");
+        }
         return productName;
     }
 
@@ -72,10 +70,6 @@ public class Product {
 
     public static Category getCategory() {
         return category;
-    }
-
-    public static void setCategory(Category category) {
-        Product.category = category;
     }
 
     public double getPrice() {

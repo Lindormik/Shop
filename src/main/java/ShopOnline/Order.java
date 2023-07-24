@@ -10,7 +10,7 @@ public class Order {
     private final String clientSurname;
     private final String clientAddress;
     private OrderStatus orderStatus;
-    private Map<Product, Integer> products;
+    private final Map<Product, Integer> products;
 
     public Order(String clientName, String clientSurname, String clientAddress, Map<Product, Integer> products, double orderSum, OrderStatus orderStatus) {
         lastOrderId++;

@@ -20,7 +20,7 @@ public class ProductServiceTest {
     public void givenGenerateProductsMethod_whenCalled_thenProductListShouldNotBeEmpty() {
 
         // When
-        List<Product> productList = productService.generateProducts();
+        List<Product> productList = ProductService.generateProducts();
 
         // Then
         Assertions.assertNotNull(productList);
@@ -50,9 +50,9 @@ public class ProductServiceTest {
         Product product2 = new Product("Produkt2", new Category("Kategoria2"), 200.0, 3);
         Product product3 = new Product("Produkt3", new Category("Kategoria3"), 150.0, 7);
 
-        productService.products.add(product1);
-        productService.products.add(product2);
-        productService.products.add(product3);
+        ProductService.products.add(product1);
+        ProductService.products.add(product2);
+        ProductService.products.add(product3);
 
         int productIDToRemove = product2.getProductID();
 
