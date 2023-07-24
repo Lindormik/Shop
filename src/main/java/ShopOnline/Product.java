@@ -40,9 +40,9 @@ public class Product {
         if (productName.length() == 0 || productName.length() >= 50) {
             throw new IllegalArgumentException("Pole Nazwa musi zawierać od 1 do 50 znaków");
         }
-        if (!productName.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$")) {
-            throw new IllegalArgumentException("Pole Nazwa musi zawierać znaki z alfabetu i cyfry");
-        }
+//        if (!productName.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$")) {
+//            throw new IllegalArgumentException("Pole Nazwa musi zawierać znaki z alfabetu i cyfry");
+//        }
         return productName;
     }
 

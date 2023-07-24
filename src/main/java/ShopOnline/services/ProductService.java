@@ -14,7 +14,7 @@ public class ProductService {
         List<Product> productList = new ArrayList<>();
 
 
-        Product product1 = new Product("Produkt1", CategoryService.categories.get(5), 874.32, 6);
+        Product product1 = new Product("Produkt1", CategoryService.categories.get(0), 874.32, 6);
         Product product2 = new Product("Produkt2", CategoryService.categories.get(2), 1293.19, 9);
         Product product3 = new Product("Produkt3", CategoryService.categories.get(5), 672.44, 2);
         Product product4 = new Product("Produkt4", CategoryService.categories.get(2), 1068.53, 3);

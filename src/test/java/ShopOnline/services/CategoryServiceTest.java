@@ -19,7 +19,7 @@ public class CategoryServiceTest {
     public void addCategoryTest() {
         // Given
 
-        String categoryTest = "Chemia";
+        String categoryTest = "Kierownice";
 
         // When
         categoryService.addCategory(categoryTest);
@@ -30,5 +30,28 @@ public class CategoryServiceTest {
         assertTrue(categoryExists);
 
     }
-
+//    @Test
+//    public void showOneCategoryWhenExistsTest(){
+//        // Given
+//        int categoryId = 1;
+//        String expectedOutput = "Kategoria o numerze: 1\n" +
+//                "Nazwa kategorii: Komputery stacjonarne";
+//        // When
+//        String actualOutput = categoryService.showOneCategory(categoryId);
+//
+//        // Then
+//        assertEquals(expectedOutput, actualOutput);
+//    }
+//
+//    @Test
+//    public void showOneCategoryWhenNotExistsTest() {
+//        // Given
+//        int categoryId = 100;
+//        String expectedOutput = "Kategoria o podanym numerze nie istnieje.";
+//        // When
+//        String actualOutput = categoryService.showOneCategory(categoryId);
+//
+//        // Then
+//        assertEquals(expectedOutput, actualOutput);
+//    }
 }

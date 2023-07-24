@@ -45,7 +45,7 @@ public class Menu {
         while (!back) {
             System.out.println("[1] Pokaż wszystkie produkty.");
             System.out.println("[2, ID Produktu] Pokaż wybrany produkt.");
-            System.out.println("[3,Nazwa produktu, Kategoria produktu, Cena produktu, Ilość produktu] Dodaj produkt.");
+            System.out.println("[3, Nazwa produktu, Kategoria produktu, Cena produktu, Ilość produktu] Dodaj produkt.");
             System.out.println("[4, ID Produktu] Usuń wybrany produkt.");
             System.out.println("[5] Cofnij");
 
@@ -75,8 +75,8 @@ public class Menu {
         boolean back = false;
         while (!back) {
             System.out.println("[1] Pokaż wszystkie kategorie.");
-            System.out.println("[2,ID Kategorii] Pokaż wybraną kategorie.");
-            System.out.println("[3,Nazwa kategorii] Dodaj kategorie.");
+            System.out.println("[2, ID Kategorii] Pokaż wybraną kategorie.");
+            System.out.println("[3, Nazwa kategorii] Dodaj kategorie.");
             System.out.println("[4, ID Kategorii] Usuń wybraną kategorię.");
             System.out.println("[5] Cofnij");
             String choice = scanner.next();
@@ -99,7 +99,7 @@ public class Menu {
         while (!back) {
             System.out.println("[1] Pokaż wszystkie zamówienia.");
             System.out.println("[2, ID Zamówienia] Pokaż wybrane zamówienie.");
-            System.out.println("[3,Imię klienta, Nazwisko klienta, Adres klienta, Wartość zamowienia,ID produktu, Ilość produktu] Dodaj zamówienie.");
+            System.out.println("[3, Imię klienta, Nazwisko klienta, Adres klienta, Wartość zamowienia, ID produktu, Ilość produktu] Dodaj zamówienie.");
             System.out.println("[4, ID Zamówienia, Nowy status] Zmień status zamówienia");
             System.out.println("[5] Cofnij");
 
