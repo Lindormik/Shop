@@ -1,6 +1,7 @@
 package ShopOnline.services;
 
 
+import ShopOnline.Category;
 import ShopOnline.Order;
 import ShopOnline.OrderStatus;
 import ShopOnline.Product;
@@ -92,4 +93,9 @@ public class OrderService {
         }
         System.out.println();
     }
+    public List<Order> getAllOrders() {
+        return orders;
+
+    }
+
 }

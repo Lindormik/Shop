@@ -53,7 +53,7 @@ public class ProductServiceTest {
         Product testProduct = new Product("TestProduct", category, 99.99, 10);
         productService.addProduct(testProduct.getProductName(), testProduct.getCategory(), testProduct.getPrice(), testProduct.getQuantity());
 
-        // Whenn
+        // When
 
         // Then
 
@@ -65,10 +65,8 @@ public class ProductServiceTest {
         int nonExistingProductId = 999;
 
         // When
-        // Capture the console output and verify it to check if the correct error message is printed.
 
         // Then
-        // Verify the captured output manually to check if it contains the correct error message.
     }
 
     @Test
@@ -78,7 +76,7 @@ public class ProductServiceTest {
         Product testProduct = new Product("TestProduct1", category, 99.99, 10);
         productService.addProduct(testProduct.getProductName(), testProduct.getCategory(), testProduct.getPrice(), testProduct.getQuantity());
 
-        // Whenn
+        // When
         Product foundProduct = productService.findProductByNameAndCategory("TestProduct1");
 
         // Then
