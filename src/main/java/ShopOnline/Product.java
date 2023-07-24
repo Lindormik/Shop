@@ -4,7 +4,7 @@ public class Product {
     private final int productID;
     private static int lastProductId = 0;
     private final String productName;
-    private static Category category;
+    private final Category category;
     private final double price;
     private final int quantity;
 
@@ -14,7 +14,7 @@ public class Product {
         this.productName = validateProductName(productName);
         this.price = validatePrice(price);
         this.quantity = validateQuantity(quantity);
-        Product.category = category;
+       this.category = category;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class Product {
         return productName;
     }
 
-    public static Category getCategory() {
+    public Category getCategory() {
         return category;
     }
 
